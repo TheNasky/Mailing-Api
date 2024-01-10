@@ -58,7 +58,7 @@ export const sendMail = async (req, res) => {
       return res.status(400).json({ error: "Email is required" });
    }
    const _id = generateId(); // Generate a 10-digit ID
-   const ip = req.connection.remoteAddress;
+   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
    const date = new Date().toLocaleString("en-GB", {
       year: "2-digit",
       month: "2-digit",

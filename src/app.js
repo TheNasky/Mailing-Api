@@ -6,7 +6,7 @@ import { connectDb } from "./config/utils/mongoConnect.js";
 import { addLogger } from "./config/logger.js"; // Import logger and addLogger
 import { logger } from "./config/logger.js";
 
-import mailsRouter from "./routes/Mails/router.js";
+import mailsRouter from "./modules/Mails/router.js";
 
 connectDb();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +16,7 @@ app.listen(PORT, () => {
 });
 
 // Middlewares //
+app.use(cors());
 app.use(express.static('public'));
 app.use(addLogger);
 app.use(express.json()); // Parse JSON requests
@@ -41,6 +42,6 @@ app.use((err, req, res, next) => {
 // Catch all //
 app.use((err, req, res, next) => {
    logger.error(`${err.stack}`);
-   res.status(500).json({ error: "Internal Server Error (Catch all)" });
+   res.status(500).json({ error: "Internal Server Error (Catch all   )" });
 });
 

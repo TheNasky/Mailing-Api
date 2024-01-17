@@ -5,6 +5,7 @@ import compression from "compression";
 import { connectDb } from "./config/utils/mongoConnect.js";
 import { addLogger } from "./config/logger.js"; // Import logger and addLogger
 import { logger } from "./config/logger.js";
+import cors from
 
 import mailsRouter from "./modules/Mails/router.js";
 
